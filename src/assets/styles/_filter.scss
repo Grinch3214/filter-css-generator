@@ -3,6 +3,9 @@
 	&__container {
 		display: flex;
 		gap: 50px;
+		@media (max-width: 992px) {
+			display: block;
+		}
 	}
 
 	&__group {
@@ -11,6 +14,12 @@
 		overflow: hidden;
 		background: var(--light-color);
 		padding: 0 0 35px;
+		@media (max-width: 1200px) {
+			flex: 1 1 45%;
+		}
+		@media (max-width: 992px) {
+			margin-bottom: 40px;
+		}
 	}
 
 	&__title {
@@ -43,16 +52,27 @@
 
 	&__output {
 		flex: 1 1 65%;
+		@media (max-width: 1200px) {
+			flex: 1 1 55%;
+		}
 	}
 
 	&__image {
-		max-width: 320px;
+		max-width: 420px;
 		height: 240px;
 		margin: 0 auto 50px;
+		@media (max-width: 1200px) {
+			max-width: 320px;
+			height: 240px;
+		}
 		img {
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
+		}
+
+		@media (max-width: 992px) {
+			max-width: 420px
 		}
 	}
 
@@ -96,9 +116,13 @@
 			border-radius: var(--border-radius);
 			font-weight: 500;
 			transition: .3s;
+			position: relative;
 
 			&:hover {
 				color: var(--second-color);
+				.filter__description-tooltip {
+					display: block;
+				}
 			}
 		}
 	}

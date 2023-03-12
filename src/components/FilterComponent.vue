@@ -36,7 +36,7 @@
 				</div>
 				
 				<div class="filter__description">
-					The <a href="https://developer.mozilla.org/ru/docs/Web/CSS/filter" target="_blank">filter</a> CSS property applies graphical effects like blur or color shift to an element. Filters are commonly used to adjust the rendering of images, backgrounds, and borders.
+					The <a href="https://developer.mozilla.org/ru/docs/Web/CSS/filter" target="_blank">filter <TooltipComponent :text="tooltipText" class="filter__description-tooltip" /> </a> CSS property applies graphical effects like blur or color shift to an element. Filters are commonly used to adjust the rendering of images, backgrounds, and borders.
 				</div>
 				
 			</div>
@@ -47,14 +47,17 @@
 
 <script>
 import slider from "vue3-slider"
+import TooltipComponent from "./TooltipComponent.vue";
 
 export default {
-  components: {
-		"vue3-slider": slider,
-	},
 	name: 'FilterComponent',
+  components: {
+    "vue3-slider": slider,
+    TooltipComponent
+	},
 	data() {
     return {
+			tooltipText: 'jump to MDN documentation',
 			copied: false,
 			handleScale: 2.4,
 			height: 8,
