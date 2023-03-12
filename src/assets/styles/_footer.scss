@@ -1,0 +1,37 @@
+.footer {
+	padding: 1rem 0;
+	color: var(--white-color);
+	background: var(--black-color);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+
+	&__link {
+		font-weight: 700;
+		color: var(--active-color);
+		text-decoration: none;
+		display: inline-flex;
+		gap: 5px;
+		align-items: center;
+		transition: .3s linear;
+
+		svg {
+			width: 40px;
+			height: 40px;
+			fill: var(--white-color);
+		}
+
+		svg circle {
+			fill: var(--active-color);
+			transition: .3s linear;
+		}
+
+		&:hover {
+			color: var(--hover-color);
+			svg circle {
+				fill: var(--hover-color);
+			}
+		}
+	}
+}

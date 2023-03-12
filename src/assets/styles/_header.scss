@@ -1,0 +1,20 @@
+.header {
+	background: var(--black-color);
+	padding: 20px 0;
+	.container {
+		display: flex;
+		justify-content: space-between;
+	}
+	&__logo {
+		display: flex;
+		align-items: center;
+		column-gap: 15px;
+		font-weight: 700;
+		font-size: 1.3rem;
+		text-decoration: none;
+		color: var(--active-color);
+	}
+
+	&__menu {
+	}
+}

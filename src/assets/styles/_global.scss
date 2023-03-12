@@ -1,0 +1,54 @@
+:root {
+	--white-color: #FFF;
+	--light-color: #F0F0F0;
+	--black-color: #010101;
+	--grey-color: #a5a5a5;
+	--main-color: #2363b1;
+	--second-color: #1f00aa;
+	--active-color: rgb(250, 97, 86);
+	--hover-color: rgb(255, 13, 13);
+
+	--border-radius: 8px;
+}
+
+html {
+	font-size: 18px;
+}
+
+body {
+	font-family: 'Montserrat';
+	font-weight: 400;
+	color: var(--black-color);
+}
+
+#app {
+	display: flex;
+	flex-flow: column;
+	min-height: 100vh;
+}
+
+main {
+	flex: 1;
+}
+
+
+.container {
+	padding: 0 50px;
+	margin: 0 auto;
+}
+
+.btn {
+	text-transform: uppercase;
+	font-size: 0.8rem;
+	font-weight: 500;
+	padding: 10px 25px;
+	background: var(--second-color);
+	color: var(--white-color);
+	border-radius: var(--border-radius);
+	cursor: pointer;
+	transition: .3s;
+
+	&:hover {
+		background: var(--main-color);
+	}
+}
