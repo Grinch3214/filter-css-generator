@@ -4,18 +4,14 @@
 	</div>
 </template>
 
+<script setup>
 
-<script>
-
-export default {
-	name: 'TooltipComponent',
-	props: {
-		text: {
-			type: String,
-			default: 'Tooltip top'
-		}
+defineProps({
+	text: {
+		type: String,
+		default: 'Tooltip top'
 	}
-}
+})
 </script>
 
 <style lang="scss" scoped>
