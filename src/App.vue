@@ -18,7 +18,7 @@ export default {
 	components: {
     FilterComponent,
     HeaderComponent,
-FooterComponent
-}
+		FooterComponent
+	}
 }
 </script>

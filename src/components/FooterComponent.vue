@@ -14,7 +14,7 @@ import IconGithub from './icons/IconGithub.vue';
 export default {
     data() {
         return {
-            link: "https://github.com/"
+            link: "https://github.com/Grinch3214"
         };
     },
     components: { IconGithub }
