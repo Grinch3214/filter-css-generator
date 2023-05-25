@@ -1,18 +1,16 @@
 <template>
   <header class="header">
 		<div class="container">
-			<a class="header__logo" href="/">
+			<a class="header__logo" href="/" @click.prevent="false">
 				<img src="../assets/logo.svg" alt="logo" width="40" height="40">
-				Filter CSS Generator (Beta)
+				{{ text }}
 			</a>
 			<div class="header__menu"></div>
 		</div>
   </header>
 </template>
 
+<script setup>
 
-<script>
-export default {
-	name: 'HeaderComponent',
-}
+const text = 'Filter CSS Generator (Beta)'
 </script>
