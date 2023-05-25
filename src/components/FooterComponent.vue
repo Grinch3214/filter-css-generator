@@ -7,16 +7,8 @@
 		</footer>
 </template>
 
-<script>
-import IconGithub from './icons/IconGithub.vue';
+<script setup>
+import IconGithub from './icons/IconGithub.vue'
 
-
-export default {
-    data() {
-        return {
-            link: "https://github.com/Grinch3214"
-        };
-    },
-    components: { IconGithub }
-}
+const link = 'https://github.com/Grinch3214'
 </script>
