@@ -45,64 +45,55 @@
 	</section>
 </template>
 
-<script>
-import slider from "vue3-slider"
-import TooltipComponent from "./TooltipComponent.vue";
+<script setup>
+import { ref, reactive, computed } from 'vue'
+import vue3Slider from "vue3-slider"
+import TooltipComponent from "./TooltipComponent.vue"
 
-export default {
-	name: 'FilterComponent',
-  components: {
-    "vue3-slider": slider,
-    TooltipComponent
-	},
-	data() {
-    return {
-			tooltipText: 'jump to MDN documentation',
-			copied: false,
-			handleScale: 2.4,
-			height: 8,
-      inputs: [
-        { id: 'invert', label: 'Invert', min: 0, max: 100, value: 0, dimension: '%', startVal: 0 },
-        { id: 'contrast', label: 'Contrast', min: 0, max: 1000, value: 100, dimension: '%', startVal: 100 },
-        { id: 'opacity', label: 'Opacity', min: 0, max: 100, value: 100, dimension: '%', startVal: 100 },
-				{ id: 'saturate', label: 'Saturate', min: 0, max: 1000, value: 100, dimension: '%', startVal: 100 },
-				{ id: 'hue', label: 'Hue Rotate', min: 0, max: 360, value: 0, dimension: '°', startVal: 0 },
-				{ id: 'brightness', label: 'Brightness', min: 0, max: 200, value: 100, dimension: '%', startVal: 100 },
-				{ id: 'blur', label: 'Blur', min: 0, max: 10, value: 0, dimension: 'px', startVal: 0 },
-				{ id: 'sepia', label: 'Sepia', min: 0, max: 100, value: 0, dimension: '%', startVal: 0 },
-				{ id: 'grayscale', label: 'Grayscale', min: 0, max: 100, value: 0, dimension: '%', startVal: 0 }
-      ]
-    }
-  },
-	computed: {
-    inputValues() {
-      return this.inputs.map(input => input.value);
-    },
-		output() {
-			return {
-				filter: `invert(${this.inputValues[0]}%) contrast(${this.inputValues[1]}%) opacity(${this.inputValues[2]}%) saturate(${this.inputValues[3]}%) hue-rotate(${this.inputValues[4]}deg) brightness(${this.inputValues[5]}%) blur(${this.inputValues[6]}px) sepia(${this.inputValues[7]}%) grayscale(${this.inputValues[8]}%)`
-			}
-		}
-  },
-	methods: {
-		resetValues() {
-			this.inputs.forEach(item => {
-				item.value = item.startVal
-			})
-		},
+const tooltipText = 'jump to MDN documentation'
+const copied = ref(false)
+const handleScale = 2.4
+const height = 8
 
-		async copyResult() {
-			let copyText = `
-			filter: ${this.output.filter};
-			-webkit-filter: ${this.output.filter};
-			-moz-filter: ${this.output.filter};
-			`
-			await navigator.clipboard.writeText(copyText)
-			this.copied = true
-			setTimeout(() => {
-				this.copied = false
-			}, 1500)
-		}
+const inputs = reactive([
+	{ id: 'invert', label: 'Invert', min: 0, max: 100, value: 0, dimension: '%', startVal: 0 },
+	{ id: 'contrast', label: 'Contrast', min: 0, max: 1000, value: 100, dimension: '%', startVal: 100 },
+	{ id: 'opacity', label: 'Opacity', min: 0, max: 100, value: 100, dimension: '%', startVal: 100 },
+	{ id: 'saturate', label: 'Saturate', min: 0, max: 1000, value: 100, dimension: '%', startVal: 100 },
+	{ id: 'hue', label: 'Hue Rotate', min: 0, max: 360, value: 0, dimension: '°', startVal: 0 },
+	{ id: 'brightness', label: 'Brightness', min: 0, max: 200, value: 100, dimension: '%', startVal: 100 },
+	{ id: 'blur', label: 'Blur', min: 0, max: 10, value: 0, dimension: 'px', startVal: 0 },
+	{ id: 'sepia', label: 'Sepia', min: 0, max: 100, value: 0, dimension: '%', startVal: 0 },
+	{ id: 'grayscale', label: 'Grayscale', min: 0, max: 100, value: 0, dimension: '%', startVal: 0 }
+])
+
+const inputValues = computed(() => {
+  return inputs.map(input => input.value)
+})
+
+
+const output = computed(() => {
+	return {
+		filter: `invert(${inputValues.value[0]}%) contrast(${inputValues.value[1]}%) opacity(${inputValues.value[2]}%) saturate(${inputValues.value[3]}%) hue-rotate(${inputValues.value[4]}deg) brightness(${inputValues.value[5]}%) blur(${inputValues.value[6]}px) sepia(${inputValues.value[7]}%) grayscale(${inputValues.value[8]}%)`
 	}
+})
+
+const resetValues = () => {
+	inputs.forEach(item => {
+		item.value = item.startVal
+	})
+}
+
+async function copyResult() {
+	let copyText = `
+	filter: ${output.value.filter};
+	-webkit-filter: ${output.value.filter};
+	-moz-filter: ${output.value.filter};
+	`
+	await navigator.clipboard.writeText(copyText)
+	copied.value = true
+	setTimeout(() => {
+		copied.value = false
+	}, 1500)
 }
 </script>
